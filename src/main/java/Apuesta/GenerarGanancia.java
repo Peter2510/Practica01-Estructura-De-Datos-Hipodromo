@@ -10,23 +10,35 @@ package Apuesta;
  * @author GORDILLO G
  */
 public class GenerarGanancia {
-    
-    public Apuesta[] GenerarGanancias(Apuesta[] apuestas,int[] resultados){
-        
-        
+
+    private int mayorGanancia = 10;
+
+    /*private Apuesta[] apuestas;
+    private int[] resultados; */
+
+    public GenerarGanancia() {
+        /*this.apuestas = apuestas;
+        this.resultados = resultados;
+        getResultados(apuestas, resultados); */
+    }
+
+    public Apuesta[] getResultados(Apuesta[] apuestas, int[] resultados) {
+
         for (int i = 0; i < apuestas.length; i++) {
             
+            
+            int ganancia = 0;
+            
             for (int j = 0; j < 10; j++) {
-                
-                
-                
+                if (apuestas[i].getOrdenLlegada()[j] == resultados[j]) {
+                    ganancia = ganancia + mayorGanancia - j;
+                } else {
+                    ganancia = ganancia + 0;
+                }
             }
-                        
+            apuestas[i].setGanancia(ganancia);
         }
-        
-        
-        
         return apuestas;
     }
-    
+
 }

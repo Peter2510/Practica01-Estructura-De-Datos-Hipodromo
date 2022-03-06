@@ -5,11 +5,10 @@
  */
 package GUI;
 
-import Apuesta.Apuesta;
+import Apuesta.*;
+import ManejoArchivos.ManejoArchivo;
 import javax.swing.JOptionPane;
-
-
-
+import ordenamiento.MetodoBurbuja;
 
 /**
  *
@@ -20,16 +19,15 @@ public class IngresarPosiciones extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
-    
     private int[] posiciones = new int[10];
     private Apuesta[] apuestas;
-    
-    
+    private ManejoArchivo escribir = new ManejoArchivo();
+
     public IngresarPosiciones(Apuesta[] apuestas) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.apuestas = apuestas;
-        
+
     }
 
     /**
@@ -306,9 +304,7 @@ public class IngresarPosiciones extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngrearActionPerformed
-        
-        
-        
+
         try {
             posiciones[0] = Integer.valueOf(pos1.getText());
             posiciones[1] = Integer.valueOf(pos2.getText());
@@ -320,19 +316,44 @@ public class IngresarPosiciones extends javax.swing.JFrame {
             posiciones[7] = Integer.valueOf(pos8.getText());
             posiciones[8] = Integer.valueOf(pos9.getText());
             posiciones[9] = Integer.valueOf(pos10.getText());
-        
-            for (int i = 0; i < apuestas.length; i++) {
-                System.out.println("Nombre: " + apuestas[i].getNombre());
+
+            verificarPosiciones pos = new verificarPosiciones();
+
+            if (!pos.verificarRepitencia(posiciones)) {
+                GenerarGanancia ganancia = new GenerarGanancia();
+                ganancia.getResultados(apuestas, posiciones);
+
+                if (ordenar.getText().equals("Puntaje obtenido")) {
+                    MetodoBurbuja num = new MetodoBurbuja();
+                    Apuesta[] porNumero = num.OrdenDescendente(apuestas);
+                    String lectura="";
+                    for (int i = 0; i < porNumero.length; i++) {
+                        lectura+= "Ganancia "+porNumero[i].getGanancia() +" " +porNumero[i].toString()+ "\n";
+                    }
+                    escribir.guardarArchivo(lectura);
+
+                } else {
+                    MetodoBurbuja letra = new MetodoBurbuja();
+                    Apuesta[] porAlfabeto = letra.OrdenAlfabetico(apuestas);
+                    String lectura="";
+                    for (int i = 0; i < porAlfabeto.length; i++) {
+                        lectura+= "Ganancia "+porAlfabeto[i].getGanancia() +" " +porAlfabeto[i].toString()+ "\n";
+                    }
+                    escribir.guardarArchivo(lectura);
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Las posiciones no pueden ser repetidas y estar en el rango de 1 a 10");
             }
-            
+
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null,"Asegurate de llenar todas las posiciones con numeros enteros de 1 a 10");
+            JOptionPane.showMessageDialog(null, "Asegurate de llenar todas las posiciones con numeros enteros");
         }
-        
+
     }//GEN-LAST:event_btnIngrearActionPerformed
 
     private void porPuntajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_porPuntajeActionPerformed
-        ordenar.setText("Por puntaje obtenido");
+        ordenar.setText("Puntaje obtenido");
     }//GEN-LAST:event_porPuntajeActionPerformed
 
     private void alfabeticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alfabeticoActionPerformed
@@ -343,7 +364,6 @@ public class IngresarPosiciones extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_pos6ActionPerformed
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton alfabetico;
