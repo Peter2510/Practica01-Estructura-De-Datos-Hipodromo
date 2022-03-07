@@ -172,6 +172,7 @@ public class ManejoArchivo {
 
             dividirApuesta = linea.split(",");
             
+            // O(1) -> Se realiza solamente 10 veces obteniendo el valor ingresado
             
             // creando la apuesta por jugador
             Apuesta apuesta = new Apuesta(dividirApuesta[0], Double.parseDouble(dividirApuesta[1]), Integer.parseInt(dividirApuesta[2]), Integer.parseInt(dividirApuesta[3]), Integer.parseInt(dividirApuesta[4]), Integer.parseInt(dividirApuesta[5]), Integer.parseInt(dividirApuesta[6]), Integer.parseInt(dividirApuesta[7]), Integer.parseInt(dividirApuesta[8]), Integer.parseInt(dividirApuesta[9]), Integer.parseInt(dividirApuesta[10]), Integer.parseInt(dividirApuesta[11]));

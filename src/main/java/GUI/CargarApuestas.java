@@ -29,7 +29,9 @@ public class CargarApuestas extends javax.swing.JFrame {
             
     public CargarApuestas() {
         initComponents();
+        this.setTitle("Cargar apuestas");
         this.setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -114,16 +116,13 @@ public class CargarApuestas extends javax.swing.JFrame {
 
          try{
              
-         
-            // Carga de las apuestas
+       // Carga de las apuestas
         ManejoArchivo cargar = new ManejoArchivo();
         cargar.leerLinea();
         apuesta = cargar.getApuestas();
         contador = cargar.getContador();
         errores = cargar.getErrores();
-        
-        
-        
+         
         }catch(Exception e){
             JOptionPane.showMessageDialog(null,"No se selecciono ningun archivo");
         }

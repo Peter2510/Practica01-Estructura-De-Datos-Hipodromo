@@ -31,8 +31,7 @@ public class GenerarGanancia {
         this.tamaño = apuestas.length;
         
         for (int i = 0; i < apuestas.length; i++) {
-            
-            
+              
             int ganancia = 0;
             
             for (int j = 0; j < 10; j++) {

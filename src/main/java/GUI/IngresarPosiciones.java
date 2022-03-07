@@ -28,6 +28,7 @@ public class IngresarPosiciones extends javax.swing.JFrame {
     public IngresarPosiciones(Apuesta[] apuestas,Reportes reporte) {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setTitle("Ingresar resultados");
         this.apuestas = apuestas;
         this.reportes = reporte;
     }
