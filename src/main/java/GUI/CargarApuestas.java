@@ -45,65 +45,66 @@ public class CargarApuestas extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         cerrarApuesta = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setFont(new java.awt.Font("Dubai", 1, 12)); // NOI18N
+        jPanel1.setLayout(null);
+
+        jButton1.setFont(new java.awt.Font("Dubai", 3, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/upload (1).png"))); // NOI18N
         jButton1.setText("Cargar apuestas");
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setFocusPainted(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton1);
+        jButton1.setBounds(20, 240, 210, 50);
 
-        jLabel2.setFont(new java.awt.Font("Dubai", 1, 18)); // NOI18N
+        jLabel2.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel2.setFont(new java.awt.Font("Dubai", 3, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Cargar las apuestas realizadas");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(10, 10, 320, 42);
 
-        cerrarApuesta.setFont(new java.awt.Font("Dubai", 1, 14)); // NOI18N
+        cerrarApuesta.setBackground(new java.awt.Color(0, 0, 0));
+        cerrarApuesta.setFont(new java.awt.Font("Dubai", 3, 18)); // NOI18N
+        cerrarApuesta.setForeground(new java.awt.Color(0, 0, 0));
+        cerrarApuesta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cancel (1).png"))); // NOI18N
         cerrarApuesta.setText("Cerrar apuestas");
+        cerrarApuesta.setBorder(null);
+        cerrarApuesta.setBorderPainted(false);
+        cerrarApuesta.setContentAreaFilled(false);
+        cerrarApuesta.setFocusPainted(false);
         cerrarApuesta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cerrarApuestaActionPerformed(evt);
             }
         });
+        jPanel1.add(cerrarApuesta);
+        cerrarApuesta.setBounds(30, 310, 200, 50);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(115, 115, 115)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(168, 168, 168)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cerrarApuesta)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(125, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(jLabel2)
-                .addGap(48, 48, 48)
-                .addComponent(jButton1)
-                .addGap(42, 42, 42)
-                .addComponent(cerrarApuesta)
-                .addContainerGap(70, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/apuestas.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(0, 0, 610, 400);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 612, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
 
         pack();
@@ -148,6 +149,7 @@ public class CargarApuestas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cerrarApuesta;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
