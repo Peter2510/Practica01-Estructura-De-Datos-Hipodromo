@@ -5,7 +5,7 @@
  */
 package Inicial;
 
-import GUI.PantallaInicial;
+import GUI.PantallaPrincipal;
 
 /**
  *
@@ -13,7 +13,7 @@ import GUI.PantallaInicial;
  */
 public class Inicial {
     public static void main(String[] args) {
-        PantallaInicial principal = new PantallaInicial();
+        PantallaPrincipal principal = new PantallaPrincipal();
         principal.setVisible(true);
     } 
 }

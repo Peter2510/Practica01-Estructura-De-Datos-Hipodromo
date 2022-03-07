@@ -5,6 +5,8 @@
  */
 package Apuesta;
 
+import Reportes.Reportes;
+
 /**
  *
  * @author GORDILLO G
@@ -13,6 +15,7 @@ public class GenerarGanancia {
 
     private int mayorGanancia = 10,tamaño,pasos,pasosProm;
     private long tInicial,tFinal,tiempoGanancias;
+    
 
     /*private Apuesta[] apuestas;
     private int[] resultados; */
@@ -26,6 +29,7 @@ public class GenerarGanancia {
     public Apuesta[] getResultados(Apuesta[] apuestas, int[] resultados) {
         tInicial=System.nanoTime();
         this.tamaño = apuestas.length;
+        
         for (int i = 0; i < apuestas.length; i++) {
             
             
@@ -43,20 +47,19 @@ public class GenerarGanancia {
             apuestas[i].setGanancia(ganancia);
         }
         tFinal = System.nanoTime();
-        System.out.println(tFinal = (tFinal-tInicial)/tamaño);
-        System.out.println(pasosProm = pasos/tamaño);
+        
         return apuestas;
     }
     
     public long getTiempoGanancias(){
         
        if(tamaño>0){
-           tFinal = (tFinal-tInicial)/tamaño;
+           tiempoGanancias = (tFinal-tInicial)/tamaño;
        }else{
-           tFinal = (tFinal-tInicial);
+           tiempoGanancias = (tFinal-tInicial);
        }
               
-     return tFinal;
+     return tiempoGanancias;
     }
     
     public int getPasosGanancias(){
@@ -67,6 +70,16 @@ public class GenerarGanancia {
             pasosProm = pasos;
        }
         return pasosProm;
+    }
+    
+    public Reportes actualizarReportes(Reportes reporte){
+        
+        reporte.setTiempoResultados(getTiempoGanancias());
+        reporte.setPasosResultados(getPasosGanancias());
+        reporte.setMaxpasosResultados(0);
+        reporte.setMinpasosResultados(0);
+        
+        return reporte;
     }
 
 }

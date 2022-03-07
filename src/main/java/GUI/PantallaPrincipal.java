@@ -5,27 +5,19 @@
  */
 package GUI;
 
-
-import Apuesta.*;
-import ManejoArchivos.ManejoArchivo;
-import Reportes.Reportes;
-import javax.swing.JOptionPane;
-
-
 /**
  *
  * @author GORDILLO G
  */
-public class CargarApuestas extends javax.swing.JFrame {
+public class PantallaPrincipal extends javax.swing.JFrame {
 
     /**
-     * Creates new form cargarApuestas
+     * Creates new form PantallaPrincipal
      */
-    String t = "Nombre,Monto Apostado,Posicion 1 apostada,Posicion 2 apostada, Posicion3 apostada, Posicion 4 apostada, Posicion 5 apostada,Posicion 6 apostada,Posicion 7 apostada,Posicion 8 apostada,Posicion 9 apostada,Posicion 10 apostada\n";
-    Reportes reporte = new Reportes();
-    public CargarApuestas() {
+    public PantallaPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setTitle("Bienvenido");
     }
 
     /**
@@ -40,23 +32,19 @@ public class CargarApuestas extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Dubai", 1, 18)); // NOI18N
-        jLabel1.setText("Las apuestas fueron realizadas hace dos horas");
+        jLabel1.setFont(new java.awt.Font("Dubai", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Control de apuestas");
 
-        jButton1.setFont(new java.awt.Font("Dubai", 1, 12)); // NOI18N
-        jButton1.setText("Cargar apuestas");
+        jButton1.setText("Ingresar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-
-        jLabel2.setFont(new java.awt.Font("Dubai", 1, 18)); // NOI18N
-        jLabel2.setText("Cargar las apuestas realizadas");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -65,26 +53,21 @@ public class CargarApuestas extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(177, 177, 177)
-                        .addComponent(jButton1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
+                        .addGap(45, 45, 45)
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(115, 115, 115)
-                        .addComponent(jLabel2)))
-                .addContainerGap(58, Short.MAX_VALUE))
+                        .addGap(146, 146, 146)
+                        .addComponent(jButton1)))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(jLabel2)
-                .addGap(53, 53, 53)
+                .addGap(40, 40, 40)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addGap(46, 46, 46))
+                .addGap(47, 47, 47))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -102,41 +85,49 @@ public class CargarApuestas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-         try{
-             
-         
-            // Carga de las apuestas
-        ManejoArchivo cargar = new ManejoArchivo();
-        cargar.leerLinea();
-        Apuesta[] apuesta = cargar.getApuestas();
-        int contador = cargar.getContador();
-        String errores = cargar.getErrores();
-        
-        //Se verifican las apuestas cargas
-        VerificarApuestas ver2 = new VerificarApuestas();
-        Apuesta[] corregidas =ver2.verficadorApuestas(apuesta, contador,errores,t);
-        Apuesta[] correctas =ver2.correctas(corregidas);
-        Reportes reporte1 = ver2.actualizarReporte(reporte);
-        
-                
-        //Se les da seguimiento a las apuestas correctas       
-        IngresarPosiciones posiciones = new IngresarPosiciones(correctas,reporte1);
+        CargarApuestas apuestas = new CargarApuestas();
+        apuestas.setVisible(true);
         this.setVisible(false);
-        posiciones.setVisible(true);
-        
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null,"No se selecciono ningun archivo");
-        }
-                
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(PantallaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(PantallaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(PantallaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(PantallaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new PantallaPrincipal().setVisible(true);
+            }
+        });
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

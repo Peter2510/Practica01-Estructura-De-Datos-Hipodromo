@@ -98,7 +98,7 @@ public class ManejoArchivo {
             archivo = ventanaSeleccionar.getSelectedFile();
 
             //crearArchivo(archivo.getAbsolutePath() + ".txt");
-            AgregarAlArchivo(archivo.getAbsolutePath() + ".txt", lectura);
+            AgregarAlArchivo(archivo.getAbsolutePath() + ".csv", lectura);
             path = archivo.getAbsolutePath();
 
         }

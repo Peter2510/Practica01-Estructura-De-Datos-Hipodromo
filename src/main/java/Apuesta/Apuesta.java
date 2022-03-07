@@ -161,9 +161,9 @@ public class Apuesta {
 
     @Override
     public String toString() {
-        return "Nombre: " + nombre + " Monto Apostado: " + monto + ", Posicion1 apostada: " + pos1Apuesta + ", Posicion2 apostada: " + pos2Apuesta + ", Posicion3 apostada: " + pos3Apuesta + ", Posicion4 apostada: " + pos4Apuesta + ", Posicion5 apostada: " + pos5Apuesta + ", Posicion6 apostada: " + pos6Apuesta + ", Posicion7 apostada: " + pos7Apuesta + ", Posicion8 apostada: " + pos8Apuesta + ", Posicion9 apostada: " + pos9Apuesta + ", Posicion10 apostada: " + pos10Apuesta ;
+        return nombre + "," + monto + "," + pos1Apuesta + "," + pos2Apuesta + "," + pos3Apuesta + "," + pos4Apuesta + "," + pos5Apuesta + "," + pos6Apuesta + "," + pos7Apuesta + "," + pos8Apuesta + "," + pos9Apuesta + "," + pos10Apuesta ;
     }
-
-   
+    
+       
     
 }

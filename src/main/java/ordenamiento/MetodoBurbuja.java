@@ -6,6 +6,7 @@
 package ordenamiento;
 
 import Apuesta.Apuesta;
+import Reportes.Reportes;
 
 /**
  *
@@ -68,12 +69,24 @@ public class MetodoBurbuja {
     }
     
     public long getTiempoOrdenamiento(){
+        
         if (tamaño > 0) {
             TiempoOrdenamiento = (tFinal - tInicial)/tamaño;
         } else {
-            TiempoOrdenamiento = tFinal - tInicial;
-        }
-
+            TiempoOrdenamiento = (tFinal - tInicial);
+        }       
+        
         return TiempoOrdenamiento;
     }
+    
+    public Reportes actualizarReportes(Reportes reporte){
+        
+        reporte.setTiempoOrdenamiento(getTiempoOrdenamiento());
+        reporte.setPasosOrdenamientos(getPasosOrdenamiento());
+        reporte.setMaxpasosOrdenamientos(0);
+        reporte.setMinpasosOrdenamientos(0);
+        
+        return reporte;
+    }
+    
 }
