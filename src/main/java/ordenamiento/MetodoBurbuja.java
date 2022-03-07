@@ -12,44 +12,68 @@ import Apuesta.Apuesta;
  * @author GORDILLO G
  */
 public class MetodoBurbuja {
-    
-    public Apuesta[] OrdenDescendente(Apuesta[] apuesta){
+
+    private long tInicial, tFinal, TiempoOrdenamiento;
+    private int pasos, promPasos, tamaño;
+
+    public Apuesta[] OrdenDescendente(Apuesta[] apuesta) {
         Apuesta auxiliar;
-        
-        for (int i = 0; i < (apuesta.length-1); i++) {
-            
-            for (int j = 0; j < (apuesta.length-1); j++) {
-                if(apuesta[j].getGanancia() < apuesta[j+1].getGanancia()){ // si numero actural mayor numero siguiente
+        this.tamaño = apuesta.length;
+        tInicial = System.nanoTime();
+        for (int i = 0; i < (apuesta.length - 1); i++) {
+
+            for (int j = 0; j < (apuesta.length - 1); j++) {
+                if (apuesta[j].getGanancia() < apuesta[j + 1].getGanancia()) { // si numero actural mayor numero siguiente
                     auxiliar = apuesta[j];
-                    apuesta[j] = apuesta[j+1];
-                    apuesta[j+1] = auxiliar;
+                    apuesta[j] = apuesta[j + 1];
+                    apuesta[j + 1] = auxiliar;
+                    pasos++;
                 }
             }
-            
-            
         }
-        
+        tFinal = System.nanoTime();
         return apuesta;
     }
-    
-    public Apuesta[] OrdenAlfabetico(Apuesta[] apuesta){
+
+    public Apuesta[] OrdenAlfabetico(Apuesta[] apuesta) {
         Apuesta auxiliar;
-        
-        for (int i = 0; i < (apuesta.length-1); i++) {
-            
-            for (int j = 0; j < (apuesta.length-1); j++) {
-                
-                if(apuesta[j].getNombre().compareToIgnoreCase(apuesta[j+1].getNombre()) > 0){ // si numero actural mayor numero siguiente
+
+        tInicial = System.nanoTime();
+        for (int i = 0; i < (apuesta.length - 1); i++) {
+
+            for (int j = 0; j < (apuesta.length - 1); j++) {
+
+                if (apuesta[j].getNombre().compareToIgnoreCase(apuesta[j + 1].getNombre()) > 0) { // si numero actural mayor numero siguiente
                     auxiliar = apuesta[j];
-                    apuesta[j] = apuesta[j+1];
-                    apuesta[j+1] = auxiliar;
+                    apuesta[j] = apuesta[j + 1];
+                    apuesta[j + 1] = auxiliar;
+                    pasos++;
                 }
             }
-            
-            
+
         }
-        
+        tFinal = System.nanoTime();
         return apuesta;
     }
+
+    public int getPasosOrdenamiento() {
+
+        if (tamaño > 0) {
+            promPasos = pasos / tamaño;
+        } else {
+            promPasos = pasos;
+        }
+
+        return promPasos;
+    }
     
+    public long getTiempoOrdenamiento(){
+        if (tamaño > 0) {
+            TiempoOrdenamiento = (tFinal - tInicial)/tamaño;
+        } else {
+            TiempoOrdenamiento = tFinal - tInicial;
+        }
+
+        return TiempoOrdenamiento;
+    }
 }

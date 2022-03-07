@@ -6,8 +6,7 @@
 package GUI;
 
 
-import Apuesta.Apuesta;
-import Apuesta.VerificacionApuestas;
+import Apuesta.*;
 import ManejoArchivos.ManejoArchivo;
 import javax.swing.JOptionPane;
 
@@ -63,26 +62,26 @@ public class CargarApuestas extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(jLabel2))
+                        .addGap(177, 177, 177)
+                        .addComponent(jButton1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
+                        .addGap(58, 58, 58)
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(153, 153, 153)
-                        .addComponent(jButton1)))
-                .addContainerGap(40, Short.MAX_VALUE))
+                        .addGap(115, 115, 115)
+                        .addComponent(jLabel2)))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(60, Short.MAX_VALUE)
+                .addGap(43, 43, 43)
                 .addComponent(jLabel2)
-                .addGap(39, 39, 39)
-                .addComponent(jLabel1)
                 .addGap(53, 53, 53)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addGap(47, 47, 47))
+                .addGap(46, 46, 46))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -101,7 +100,9 @@ public class CargarApuestas extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        try {
+         try{
+             
+         
             // Carga de las apuestas
         ManejoArchivo cargar = new ManejoArchivo();
         cargar.leerLinea();
@@ -110,19 +111,19 @@ public class CargarApuestas extends javax.swing.JFrame {
         String errores = cargar.getErrores();
         
         //Se verifican las apuestas cargas
-        VerificacionApuestas ver = new VerificacionApuestas();
-        Apuesta[] corregidas =ver.verficadorApuestas(apuesta, contador,errores);
-        Apuesta[] correctas =ver.correctas(corregidas);
+        VerificarApuestas ver2 = new VerificarApuestas();
+        Apuesta[] corregidas =ver2.verficadorApuestas(apuesta, contador,errores);
+        Apuesta[] correctas =ver2.correctas(corregidas);
         
         //Se les da seguimiento a las apuestas correctas       
         IngresarPosiciones posiciones = new IngresarPosiciones(correctas);
         this.setVisible(false);
         posiciones.setVisible(true);
-        } catch (Exception e) {
+        
+        }catch(Exception e){
             JOptionPane.showMessageDialog(null,"No se selecciono ningun archivo");
         }
-        
-        
+                
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
