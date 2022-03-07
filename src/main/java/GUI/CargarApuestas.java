@@ -23,6 +23,10 @@ public class CargarApuestas extends javax.swing.JFrame {
      */
     String t = "Nombre,Monto Apostado,Posicion 1 apostada,Posicion 2 apostada, Posicion3 apostada, Posicion 4 apostada, Posicion 5 apostada,Posicion 6 apostada,Posicion 7 apostada,Posicion 8 apostada,Posicion 9 apostada,Posicion 10 apostada\n";
     Reportes reporte = new Reportes();
+    Apuesta[] apuesta;
+    String errores;
+    int contador;
+            
     public CargarApuestas() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -38,14 +42,11 @@ public class CargarApuestas extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        cerrarApuesta = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setFont(new java.awt.Font("Dubai", 1, 18)); // NOI18N
-        jLabel1.setText("Las apuestas fueron realizadas hace dos horas");
 
         jButton1.setFont(new java.awt.Font("Dubai", 1, 12)); // NOI18N
         jButton1.setText("Cargar apuestas");
@@ -58,6 +59,14 @@ public class CargarApuestas extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Dubai", 1, 18)); // NOI18N
         jLabel2.setText("Cargar las apuestas realizadas");
 
+        cerrarApuesta.setFont(new java.awt.Font("Dubai", 1, 14)); // NOI18N
+        cerrarApuesta.setText("Cerrar apuestas");
+        cerrarApuesta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerrarApuestaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -65,26 +74,25 @@ public class CargarApuestas extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(177, 177, 177)
-                        .addComponent(jButton1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(115, 115, 115)
-                        .addComponent(jLabel2)))
-                .addContainerGap(58, Short.MAX_VALUE))
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(168, 168, 168)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cerrarApuesta)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addComponent(jLabel2)
-                .addGap(53, 53, 53)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addGap(48, 48, 48)
                 .addComponent(jButton1)
-                .addGap(46, 46, 46))
+                .addGap(42, 42, 42)
+                .addComponent(cerrarApuesta)
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -109,10 +117,20 @@ public class CargarApuestas extends javax.swing.JFrame {
             // Carga de las apuestas
         ManejoArchivo cargar = new ManejoArchivo();
         cargar.leerLinea();
-        Apuesta[] apuesta = cargar.getApuestas();
-        int contador = cargar.getContador();
-        String errores = cargar.getErrores();
+        apuesta = cargar.getApuestas();
+        contador = cargar.getContador();
+        errores = cargar.getErrores();
         
+        
+        
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,"No se selecciono ningun archivo");
+        }
+                
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void cerrarApuestaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarApuestaActionPerformed
         //Se verifican las apuestas cargas
         VerificarApuestas ver2 = new VerificarApuestas();
         Apuesta[] corregidas =ver2.verficadorApuestas(apuesta, contador,errores,t);
@@ -124,18 +142,12 @@ public class CargarApuestas extends javax.swing.JFrame {
         IngresarPosiciones posiciones = new IngresarPosiciones(correctas,reporte1);
         this.setVisible(false);
         posiciones.setVisible(true);
-        
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null,"No se selecciono ningun archivo");
-        }
-                
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_cerrarApuestaActionPerformed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cerrarApuesta;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
